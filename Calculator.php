@@ -6,22 +6,22 @@ class Calculator
     static array $operands = ['+', '-', '*', '/'];
     static array $priorityOperands = ['*', '/'];
 
-    static function Calculate($str): string {
+    static function calculate($str): string {
         foreach (str_split($str) as $char)
             if (!in_array($char, self::$possibleCharacters))
                 return 'Invalid input!';
 
-        $explodedToArray = self::Explode($str);
+        $explodedToArray = self::explode($str);
 
         if (count($explodedToArray) < 3)
             return 'Wrong expression!';
 
-        $calculatedResult = self::CalculateFromArray($explodedToArray);
+        $calculatedResult = self::calculateFromArray($explodedToArray);
 
         return $calculatedResult;
     }
 
-    static function Explode($str): array {
+    static function explode($str): array {
         $result = array();
         $tempValue = '';
 
@@ -44,7 +44,7 @@ class Calculator
         return $result;
     }
 
-    static function CalculateFromArray($arr):string {
+    static function calculateFromArray($arr):string {
         $end = false;
         $result = 0;
 

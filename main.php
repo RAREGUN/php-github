@@ -16,7 +16,7 @@ function entry(): void {
     elseif ($selection == 'C') {
         $input = readline('Calculation expression: ');
 
-        $result = Calculator::Calculate($input);
+        $result = Calculator::calculate($input);
 
         printf('Result: %s', $result);
     }
