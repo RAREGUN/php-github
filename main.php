@@ -3,22 +3,26 @@ require_once 'TimeCalculator.php';
 require_once 'Calculator.php';
 
 function entry(): void {
-    $selection = readline('TimeCalculator (TC) / Calculator (C)');
+    echo 'TimeCalculator (TC) / Calculator (C): ';
+    $selection = readline();
 
     if ($selection == 'TC') {
-        $first = readline('Enter first time value (hh:mm:ss): ');
-        $second = readline('Enter first time value (hh:mm:ss): ');
+        echo 'Enter first time value (hh:mm:ss): ';
+        $first = readline();
+        echo 'Enter first time value (hh:mm:ss): ';
+        $second = readline();
 
         $result = TimeCalculator::sumTime($first, $second);
 
-        printf('Result: %s', $result);
+        echo sprintf('Result: %s', $result);
     }
     elseif ($selection == 'C') {
-        $input = readline('Calculation expression: ');
+        echo 'Calculation expression: ';
+        $input = readline();
 
         $result = Calculator::calculate($input);
 
-        printf('Result: %s', $result);
+        echo sprintf('Result: %s', $result);
     }
 }
 

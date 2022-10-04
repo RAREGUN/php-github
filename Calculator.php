@@ -3,8 +3,8 @@
 class Calculator
 {
     static array $possibleCharacters = [ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '+', '-', '*', '/' ];
-    static array $operands = ['+', '-', '*', '/'];
-    static array $priorityOperands = ['*', '/'];
+    static array $operators = ['+', '-', '*', '/'];
+    static array $priorityOperators = ['*', '/'];
 
     static function calculate($str): string {
         foreach (str_split($str) as $char)
@@ -13,8 +13,19 @@ class Calculator
 
         $explodedToArray = self::explode($str);
 
-        if (count($explodedToArray) < 3)
+        $operatorsCount = 0;
+        $operandsCount = 0;
+
+        foreach ($explodedToArray as $item) {
+            if ($item[0] == 1) $operandsCount++;
+            elseif ($item[0] != 0) $operatorsCount++;
+        }
+
+        if (count($explodedToArray) < 3 || $operandsCount - $operatorsCount != 1)
             return 'Wrong expression!';
+
+        if ($operandsCount > 5)
+            return 'Operators count must be less than 5!';
 
         $calculatedResult = self::calculateFromArray($explodedToArray);
 
@@ -27,19 +38,19 @@ class Calculator
 
         for ($idx = 0; $idx < strlen($str); $idx++) {
             $letter = $str[$idx];
-            $isOperator = in_array($letter, self::$operands) && $idx != 0;
+            $isOperator = in_array($letter, self::$operators) && $idx != 0;
 
             if ($isOperator) {
                 $result[] = [1, $tempValue];
                 $tempValue = '';
 
-                $result[] = [in_array($letter, self::$priorityOperands) ? 3 : 2, $letter];
+                $result[] = [in_array($letter, self::$priorityOperators) ? 3 : 2, $letter];
             }
             else $tempValue = $tempValue . $letter;
-
-            if ($idx == strlen($str) - 1)
-                $result[] = [1, $tempValue];
         }
+
+        if ($tempValue != '')
+            $result[] = [1, $tempValue];
 
         return $result;
     }
@@ -89,7 +100,7 @@ class Calculator
                             return 'Error! Division by zero exception.';
 
                         $resultValue = $leftOperand / $rightOperand;
-                    };
+                    }
 
                     $arr[$lastOperatorIndex][0] = 1;
                     $arr[$lastOperatorIndex][1] = $resultValue;
