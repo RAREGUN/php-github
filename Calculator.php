@@ -1,5 +1,16 @@
 <?php
 
+var_dump($argc);
+var_dump($argv);
+
+if ($argc < 2) {
+    echo 'Insufficient arguments count!';
+    return;
+}
+
+echo sprintf('Result: %s', Calculator::calculate($argv[1]));
+readline();
+
 class Calculator
 {
     static array $possibleCharacters = [ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '+', '-', '*', '/' ];

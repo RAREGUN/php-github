@@ -1,5 +1,16 @@
 <?php
 
+var_dump($argc);
+var_dump($argv);
+
+if ($argc < 3) {
+    echo 'Insufficient arguments count!';
+    return;
+}
+
+echo sprintf('Result: %s', TimeCalculator::sumTime($argv[1], $argv[2]));
+readline();
+
 class TimeCalculator
 {
     static array $possibleCharacters = [ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':' ];
@@ -27,6 +38,9 @@ class TimeCalculator
         foreach (str_split($second) as $char)
             if (!in_array($char, self::$possibleCharacters))
                 return 'Invalid input!';
+
+        echo join(', ', explode(':', $first)) . "\r\n";
+        echo join(', ', explode(':', $second)) . "\r\n";
 
         if (explode(':', $first) != 3 || explode(':', $second) != 3)
             return 'Invalid input!';
