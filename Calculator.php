@@ -13,11 +13,11 @@ readline();
 
 class Calculator
 {
-    static array $possibleCharacters = [ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '+', '-', '*', '/' ];
-    static array $operators = ['+', '-', '*', '/'];
-    static array $priorityOperators = ['*', '/'];
+    private static array $possibleCharacters = [ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '+', '-', '*', '/' ];
+    private static array $operators = ['+', '-', '*', '/'];
+    private static array $priorityOperators = ['*', '/'];
 
-    static function calculate($str): string {
+    public static function calculate($str): string {
         foreach (str_split($str) as $char)
             if (!in_array($char, self::$possibleCharacters))
                 return 'Invalid input!';
@@ -43,7 +43,7 @@ class Calculator
         return $calculatedResult;
     }
 
-    static function explode($str): array {
+    private static function explode($str): array {
         $result = array();
         $tempValue = '';
 
@@ -66,7 +66,7 @@ class Calculator
         return $result;
     }
 
-    static function calculateFromArray($arr):string {
+    private static function calculateFromArray($arr):string {
         $end = false;
         $result = 0;
 
