@@ -2,11 +2,20 @@
 
 class Calculator
 {
+    static array $possibleCharacters = [ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '+', '-', '*', '/' ];
     static array $operands = ['+', '-', '*', '/'];
     static array $priorityOperands = ['*', '/'];
 
     static function Calculate($str): string {
+        foreach (str_split($str) as $char)
+            if (!in_array($char, self::$possibleCharacters))
+                return 'Invalid input!';
+
         $explodedToArray = self::Explode($str);
+
+        if (count($explodedToArray) < 3)
+            return 'Wrong expression!';
+
         $calculatedResult = self::CalculateFromArray($explodedToArray);
 
         return $calculatedResult;
