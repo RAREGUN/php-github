@@ -39,10 +39,7 @@ class TimeCalculator
             if (!in_array($char, self::$possibleCharacters))
                 return 'Invalid input!';
 
-        echo join(', ', explode(':', $first)) . "\r\n";
-        echo join(', ', explode(':', $second)) . "\r\n";
-
-        if (explode(':', $first) != 3 || explode(':', $second) != 3)
+        if (count(explode(':', $first)) != 3 || count(explode(':', $second)) != 3)
             return 'Invalid input!';
 
         return self::secondsToTime(self::timeToSeconds($first) + self::timeToSeconds($second));
