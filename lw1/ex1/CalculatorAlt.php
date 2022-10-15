@@ -12,30 +12,30 @@ class CalculatorAlt
 {
     private float $value = 0;
 
-    public function sum($arg): self
+    public function sum(int $arg): self
     {
         $this->value += $arg;
 
         return $this;
     }
 
-    public function minus($arg): self
+    public function minus(int $arg): self
     {
         $this->value -= $arg;
 
         return $this;
     }
 
-    public function product($arg): self
+    public function product(int $arg): self
     {
         $this->value *= $arg;
 
         return $this;
     }
 
-    public function division($arg): self
+    public function division(int $arg): self
     {
-        if ($arg === 0)
+        if ($arg == 0)
             throw new Exception('Division by zero.');
 
         $this->value /= $arg;

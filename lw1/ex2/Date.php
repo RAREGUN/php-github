@@ -124,7 +124,7 @@ class Date
         return $diff * $modifier;
     }
 
-    public function minusDay($value): self
+    public function minusDay(int $value): self
     {
         $duplicate = $this->getDuplicate();
 
@@ -144,7 +144,7 @@ class Date
         return Date::$daysOfWeek[$res];
     }
 
-    public function format($lang): string
+    public function format(string $lang): string
     {
         if ($lang === 'en')
             return sprintf("%s-%s-%s",

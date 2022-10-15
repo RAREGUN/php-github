@@ -17,7 +17,7 @@ class Calculator
     private static array $operators = ['+', '-', '*', '/'];
     private static array $priorityOperators = ['*', '/'];
 
-    public static function calculate($str): string
+    public static function calculate(string $str): string
     {
         foreach (str_split($str) as $char)
             if (!in_array($char, self::$possibleCharacters))
@@ -44,7 +44,7 @@ class Calculator
         return $calculatedResult;
     }
 
-    private static function explode($str): array
+    private static function explode(string $str): array
     {
         $result = array();
         $tempValue = '';
@@ -67,7 +67,7 @@ class Calculator
         return $result;
     }
 
-    private static function calculateFromArray($arr): string
+    private static function calculateFromArray(array $arr): string
     {
         $end = false;
         $result = 0;

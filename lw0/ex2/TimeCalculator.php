@@ -15,14 +15,14 @@ class TimeCalculator
 {
     private static array $possibleCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':'];
 
-    static function timeToSeconds($time): int
+    static function timeToSeconds(string $time): int
     {
         list($hours, $minutes, $seconds) = explode(':', $time);
 
         return mktime($hours, $minutes, $seconds) - mktime(0, 0, 0);
     }
 
-    private static function secondsToTime($seconds): string
+    private static function secondsToTime(int $seconds): string
     {
         $hours = (int)($seconds / 3600);
         $minutes = (int)(($seconds - ($hours * 3600)) / 60);
@@ -32,7 +32,7 @@ class TimeCalculator
         return $hours . ":" . str_pad($minutes, 2, '0', STR_PAD_LEFT) . ':' . str_pad($seconds, 2, '0', STR_PAD_LEFT);
     }
 
-    public static function sumTime($first, $second): string
+    public static function sumTime(string $first, string $second): string
     {
         foreach (str_split($first) as $char)
             if (!in_array($char, self::$possibleCharacters))
