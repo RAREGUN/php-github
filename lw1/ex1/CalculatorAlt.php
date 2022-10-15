@@ -35,7 +35,7 @@ class CalculatorAlt
 
     public function division($arg): self
     {
-        if ($arg == 0)
+        if ($arg === 0)
             throw new Exception('Division by zero.');
 
         $this->value /= $arg;

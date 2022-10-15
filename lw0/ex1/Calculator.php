@@ -29,11 +29,11 @@ class Calculator
         $operandsCount = 0;
 
         foreach ($explodedToArray as $item) {
-            if ($item[0] == 1) $operandsCount++;
-            elseif ($item[0] != 0) $operatorsCount++;
+            if ($item[0] === 1) $operandsCount++;
+            elseif ($item[0] !== 0) $operatorsCount++;
         }
 
-        if (count($explodedToArray) < 3 || $operandsCount - $operatorsCount != 1)
+        if (count($explodedToArray) < 3 || $operandsCount - $operatorsCount !== 1)
             return 'Wrong expression!';
 
         if ($operandsCount > 5)
@@ -51,7 +51,7 @@ class Calculator
 
         for ($idx = 0; $idx < strlen($str); $idx++) {
             $letter = $str[$idx];
-            $isOperator = in_array($letter, self::$operators) && $idx != 0;
+            $isOperator = in_array($letter, self::$operators) && $idx !== 0;
 
             if ($isOperator) {
                 $result[] = [1, $tempValue];
@@ -61,7 +61,7 @@ class Calculator
             } else $tempValue = $tempValue . $letter;
         }
 
-        if ($tempValue != '')
+        if ($tempValue !== '')
             $result[] = [1, $tempValue];
 
         return $result;
@@ -82,7 +82,7 @@ class Calculator
                     $lastOperatorPriority = $arr[$idx][0];
                 }
 
-                if ($idx == 0) {
+                if ($idx === 0) {
                     if ($lastOperatorIndex < 0) {
                         $end = true;
                         break;
@@ -105,11 +105,11 @@ class Calculator
                     $rightOperand = $arr[$rightOperandTempIndex][1];
                     $resultValue = 0;
 
-                    if ($lastOperatorValue == '+') $resultValue = $leftOperand + $rightOperand;
-                    elseif ($lastOperatorValue == '-') $resultValue = $leftOperand - $rightOperand;
-                    elseif ($lastOperatorValue == '*') $resultValue = $leftOperand * $rightOperand;
-                    elseif ($lastOperatorValue == '/') {
-                        if ($rightOperand == '0')
+                    if ($lastOperatorValue === '+') $resultValue = $leftOperand + $rightOperand;
+                    elseif ($lastOperatorValue === '-') $resultValue = $leftOperand - $rightOperand;
+                    elseif ($lastOperatorValue === '*') $resultValue = $leftOperand * $rightOperand;
+                    elseif ($lastOperatorValue === '/') {
+                        if ($rightOperand === '0')
                             return 'Error! Division by zero exception.';
 
                         $resultValue = $leftOperand / $rightOperand;

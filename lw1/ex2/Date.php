@@ -29,7 +29,7 @@ class Date
         } else {
             throw new Exception("Year must be >= 1900 and <= 2100!");
         }
-        if (($this->month == 2 && Date::isLeapYear($this->year) && $day >= 1 && $day <= 29)
+        if (($this->month === 2 && Date::isLeapYear($this->year) && $day >= 1 && $day <= 29)
             || ($day >= 1 && $day <= Date::$days[$this->month])) {
             $this->day = $day;
         } else {
@@ -44,8 +44,8 @@ class Date
 
     public function decrement()
     {
-        if ($this->day == 1) {
-            if ($this->month == 1) {
+        if ($this->day === 1) {
+            if ($this->month === 1) {
                 $this->year--;
                 $this->month = 12;
             } else $this->month--;
@@ -57,7 +57,7 @@ class Date
 
     public function getEndOfMonth(): int
     {
-        if ($this->month == 2 && Date::isLeapYear($this->year))
+        if ($this->month === 2 && Date::isLeapYear($this->year))
             return 29;
 
         return Date::$days[$this->month];
@@ -65,7 +65,7 @@ class Date
 
     public static function isLeapYear(int $yy): bool
     {
-        return $yy % 400 == 0 || $yy % 100 != 0 && $yy % 4 == 0;
+        return $yy % 400 === 0 || $yy % 100 !== 0 && $yy % 4 === 0;
     }
 
     public function isEquals(Date $comparable): bool
@@ -74,7 +74,7 @@ class Date
         $monthDiff = $this->month - $comparable->month;
         $dayDiff = $this->day - $comparable->day;
 
-        return $yearDiff == 0 && $monthDiff == 0 && $dayDiff == 0;
+        return $yearDiff === 0 && $monthDiff === 0 && $dayDiff === 0;
     }
 
     public function isGreater(Date $comparable): bool
@@ -83,15 +83,15 @@ class Date
         $monthDiff = $this->month - $comparable->month;
         $dayDiff = $this->day - $comparable->day;
 
-        if ($yearDiff == 0 && $monthDiff == 0 && $dayDiff == 0) // Exclude unexpected behaviour :)
+        if ($yearDiff === 0 && $monthDiff === 0 && $dayDiff === 0) // Exclude unexpected behaviour :)
             return false;
 
         if ($yearDiff > 0)
             return true;
-        elseif ($yearDiff == 0) {
+        elseif ($yearDiff === 0) {
             if ($monthDiff > 0)
                 return true;
-            elseif ($monthDiff == 0)
+            elseif ($monthDiff === 0)
                 return $dayDiff > 0;
         }
 
@@ -146,7 +146,7 @@ class Date
 
     public function format($lang): string
     {
-        if ($lang == 'en')
+        if ($lang === 'en')
             return sprintf("%s-%s-%s",
                 str_pad($this->year, 2, '0', STR_PAD_LEFT),
                 str_pad($this->month, 2, '0', STR_PAD_LEFT),
