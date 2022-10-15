@@ -13,11 +13,12 @@ readline();
 
 class Calculator
 {
-    private static array $possibleCharacters = [ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '+', '-', '*', '/' ];
+    private static array $possibleCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '+', '-', '*', '/'];
     private static array $operators = ['+', '-', '*', '/'];
     private static array $priorityOperators = ['*', '/'];
 
-    public static function calculate($str): string {
+    public static function calculate($str): string
+    {
         foreach (str_split($str) as $char)
             if (!in_array($char, self::$possibleCharacters))
                 return 'Invalid input!';
@@ -43,7 +44,8 @@ class Calculator
         return $calculatedResult;
     }
 
-    private static function explode($str): array {
+    private static function explode($str): array
+    {
         $result = array();
         $tempValue = '';
 
@@ -56,8 +58,7 @@ class Calculator
                 $tempValue = '';
 
                 $result[] = [in_array($letter, self::$priorityOperators) ? 3 : 2, $letter];
-            }
-            else $tempValue = $tempValue . $letter;
+            } else $tempValue = $tempValue . $letter;
         }
 
         if ($tempValue != '')
@@ -66,7 +67,8 @@ class Calculator
         return $result;
     }
 
-    private static function calculateFromArray($arr):string {
+    private static function calculateFromArray($arr): string
+    {
         $end = false;
         $result = 0;
 
@@ -87,13 +89,13 @@ class Calculator
                     }
 
                     $leftOperandTempIndex = $lastOperatorIndex - 1;
-                    for (;$leftOperandTempIndex >= 0; $leftOperandTempIndex--) {
+                    for (; $leftOperandTempIndex >= 0; $leftOperandTempIndex--) {
                         if ($arr[$leftOperandTempIndex][0] > 0)
                             break;
                     }
 
                     $rightOperandTempIndex = $lastOperatorIndex + 1;
-                    for (;$rightOperandTempIndex < count($arr); $rightOperandTempIndex++) {
+                    for (; $rightOperandTempIndex < count($arr); $rightOperandTempIndex++) {
                         if ($arr[$rightOperandTempIndex][0] > 0)
                             break;
                     }
