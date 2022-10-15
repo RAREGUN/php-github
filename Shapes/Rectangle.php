@@ -10,13 +10,11 @@ class Rectangle extends Shape
         $this->side_b = $side_b;
     }
 
-    protected function getPerimeter(): float
-    {
+    protected function getPerimeter(): float {
         return ($this->side_a + $this->side_b) * 2;
     }
 
-    protected function getArea(): float
-    {
+    protected function getArea(): float {
         return $this->side_a * $this->side_b;
     }
 

@@ -8,14 +8,14 @@ class Date
 
     public static array $days = [ 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
     public static array $daysOfWeek = [
-            'Sunday',
-            'Monday',
-            'Tuesday',
-            'Wednesday',
-            'Thursday',
-            'Friday',
-            'Saturday',
-        ];
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+    ];
 
     public function __construct(int $dd, int $mm, int $yy) {
         if ($mm >= 1 && $mm <= 12) {

@@ -8,13 +8,11 @@ class Square extends Shape
         $this->side = $side;
     }
 
-    protected function getPerimeter(): float
-    {
+    protected function getPerimeter(): float {
         return $this->side * 4;
     }
 
-    protected function getArea(): float
-    {
+    protected function getArea(): float {
         return $this->side * $this->side;
     }
 

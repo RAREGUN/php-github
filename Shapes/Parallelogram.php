@@ -12,13 +12,11 @@ class Parallelogram extends Shape
         $this->height = $height;
     }
 
-    protected function getPerimeter(): float
-    {
+    protected function getPerimeter(): float {
         return ($this->base + $this->side) * 2;
     }
 
-    protected function getArea(): float
-    {
+    protected function getArea(): float {
         return $this->base * $this->height;
     }
 
