@@ -17,27 +17,27 @@ class Date
         'Saturday',
     ];
 
-    public function __construct(int $dd, int $mm, int $yy)
+    public function __construct(int $day, int $month, int $year)
     {
-        if ($mm >= 1 && $mm <= 12) {
-            $this->month = $mm;
+        if ($month >= 1 && $month <= 12) {
+            $this->month = $month;
         } else {
             throw new Exception("Month must be 1-12!");
         }
-        if ($yy >= 1900 && $yy <= 2100) {
-            $this->year = $yy;
+        if ($year >= 1900 && $year <= 2100) {
+            $this->year = $year;
         } else {
             throw new Exception("Year must be >= 1900 and <= 2100!");
         }
-        if (($this->month == 2 && Date::isLeapYear($this->year) && $dd >= 1 && $dd <= 29)
-            || ($dd >= 1 && $dd <= Date::$days[$this->month])) {
-            $this->day = $dd;
+        if (($this->month == 2 && Date::isLeapYear($this->year) && $day >= 1 && $day <= 29)
+            || ($day >= 1 && $day <= Date::$days[$this->month])) {
+            $this->day = $day;
         } else {
             throw new Exception("Day is out of range for current month and year!");
         }
     }
 
-    public function getDuplicate(): Date
+    public function getDuplicate(): self
     {
         return new Date($this->day, $this->month, $this->year);
     }
@@ -124,7 +124,7 @@ class Date
         return $diff * $modifier;
     }
 
-    public function minusDay($value): Date
+    public function minusDay($value): self
     {
         $duplicate = $this->getDuplicate();
 
