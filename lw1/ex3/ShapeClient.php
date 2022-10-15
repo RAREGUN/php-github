@@ -1,4 +1,9 @@
 <?php
+
+use Shapes\Parallelogram;
+use Shapes\Rectangle;
+use Shapes\Square;
+
 require_once('Shapes/Shape.php');
 require_once('Shapes/Square.php');
 require_once('Shapes/Rectangle.php');
