@@ -13,7 +13,7 @@ const PASSWORD = 'admin';
 const DATABASE = 'school';
 const PORT = 3306;
 
-function main() // Entry point
+function main(): void // Entry point
 {
     printf('Opening \'%s\' file...', FILE);
     // Check if xlsx file exists
@@ -132,7 +132,8 @@ function main() // Entry point
     printf("Uploading completed, finishing...\r\n");
 }
 
-function getProperPhoneNumber(string $str): string {
+function getProperPhoneNumber(string $str): string
+{
     if (strpos($str, '.') !== false) // Decline wrong input which contains point character
         return '';
 
@@ -160,7 +161,8 @@ function getProperPhoneNumber(string $str): string {
     return $str;
 }
 
-function getProperMailAddress(string $str) {
+function getProperMailAddress(string $str): string
+{
     $matches = [];
 
     if (preg_match('/\b[\w.-]+@[\w.-]+\.\w{2,4}\b/', $str, $matches)) { // Looking for matches of Regular Expression
