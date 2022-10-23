@@ -18,6 +18,7 @@ function main() // Entry point
     printf('Opening \'%s\' file...', FILE);
     // Check if xlsx file exists
     if (!file_exists(FILE)) {
+        printf(" [ERROR]\r\n");
         throw new Exception(sprintf('File \'%s\' not found!', FILE));
     }
 
