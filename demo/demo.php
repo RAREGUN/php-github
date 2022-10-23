@@ -11,7 +11,7 @@ const HOST = 'localhost';
 const USER = 'root';
 const PASSWORD = 'admin';
 const DATABASE = 'school';
-CONST PORT = 3306;
+const PORT = 3306;
 
 function main() // Entry point
 {
